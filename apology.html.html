@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sorry, Bestie 💌</title>
+  <style>
+    body, html {
+      margin: 0; 
+      padding: 0; 
+      height: 100vh;
+      background: linear-gradient(135deg, #fcefee 20%, #f8d6f7 80%);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #4a1853;
+      user-select: none;
+    }
+    .envelope-container {
+      position: relative;
+      width: 480px;
+      height: 360px;
+      perspective: 900px;
+      cursor: pointer;
+      overflow: visible;
+    }
+    .envelope {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: opacity 1s ease;
+      z-index: 2;
+    }
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 110px;
+      background: linear-gradient(135deg, #d88acc, #c35ecd);
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 -6px 20px #b76ecb88;
+      transform-origin: bottom center;
+      transition: transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 3;
+    }
+    .body {
+      position: absolute;
+      top: 110px;
+      left: 0;
+      width: 100%;
+      height: 250px;
+      background: #fff5fb;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 25px #d7aaff88;
+      border: 3px solid #c35ecd;
+      overflow: hidden;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* "Please Click Me" text */
+    .click-me {
+      font-size: 1.6em;
+      color: #a14cb8;
+      background: #ffeaffcc;
+      padding: 8px 18px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px #d8a8ff88;
+      user-select: none;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+    .open .click-me {
+      opacity: 0;
+    }
+    /* Letter styling: enough height for full content without scrolling */
+    .letter {
+      position: absolute;
+      top: -320px;
+      left: 24px;
+      right: 24px;
+      padding: 32px 28px;
+      background: #fff0f8;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #d49aeacc;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s, top 0.8s ease 0.3s;
+      text-align: center;
+      color: #6a3083;
+      z-index: 4;
+      max-height: none;
+      overflow-y: visible;
+      height: auto;
+      white-space: normal;
+    }
+    .open .flap {
+      transform: rotateX(-130deg);
+      box-shadow: none;
+    }
+    .open .envelope {
+      opacity: 0;
+      pointer-events: none;
+      transition-delay: 0.5s;
+    }
+    .open .letter {
+      top: 20px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h1 {
+      font-size: 2.4em;
+      margin: 0 0 18px 0;
+      color: #b85ecc;
+    }
+    .emoji {
+      font-size: 2.6em;
+      margin-bottom: 14px;
+    }
+    p {
+      font-size: 1.15em;
+      line-height: 1.45;
+      margin: 12px 0;
+      font-weight: 500;
+    }
+    .signature {
+      margin-top: 30px;
+      font-style: italic;
+      color: #9e70a3;
+      font-weight: 600;
+    }
+    .envelope-container.open {
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <div class="envelope-container" role="button" tabindex="0" aria-label="Apology letter envelope">
+    <div class="envelope" id="envelope">
+      <div class="flap"></div>
+      <div class="body">
+        <div class="click-me">Please Click Me</div>
+      </div>
+    </div>
+    <div class="letter" id="letter" aria-live="polite">
+      <div class="emoji" aria-hidden="true">🥺💖🙏</div>
+      <h1>I'm Sorry</h1>
+      <p>Dear Mansi👸🏻,</p>
+      <p>
+        I know I hurt you recently and it makes my heart so heavy. I never meant to cause you pain,
+        and I hope you can forgive my mistake.<br />
+        Our friendship means the world to me.i promise you i will never repeate such mistakes again and will always take care of your feelings.
+      </p>
+      <p>
+        Please give me a chance to make things right.<br />
+        You deserve all the happiness and love, and I want to be there for you, always.
+      </p>
+      <p class="signature">
+        Forever your friend,<br />your very own <br> Praneet 🐒
+      </p>
+    </div>
+  </div>
+  <script>
+    const container = document.querySelector('.envelope-container');
+    container.addEventListener('click', () => {
+      container.classList.add('open');
+    });
+    container.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && !container.classList.contains('open')) {
+        e.preventDefault();
+        container.classList.add('open');
+      }
+    });
+  </script>
+</body>
+</html>
